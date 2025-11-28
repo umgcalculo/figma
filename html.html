@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Banco Nova – Tarjeta Nova Cashback 5%</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap" rel="stylesheet">
+<style>
+	.nunito-sans-<uniquifier> {
+  font-family: "Nunito Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100,
+    "YTLC" 500;
+}
+  :root{
+    --nova-blue:#1E3A8A;
+    --nova-blue-light:#3B82F6;
+    --cashback:#10B981;
+    --bg:#F5F7FB;
+    --text:#0F172A;
+    --text-2:#475569;
+    --border:#E2E8F0;
+    --hero-a:#EEF2FF;
+    --hero-b:#E0F2FE;
+    --radius-lg:16px;
+    --radius-xl:24px;
+    --shadow-1:0 8px 24px rgba(15,23,42,0.06);
+    --shadow-2:0 16px 40px rgba(15,23,42,0.10);
+    --container:1140px;
+  }
+  /* Tipografías del sistema para no usar URLs externas */
+  html,body{
+    font-family: "Nunito Sans", sans-serif;
+    color:var(--text);
+    background:var(--bg);
+    margin:0;
+  }
+  .container{
+    width:100%;
+    max-width:var(--container);
+    margin:0 auto;
+    padding:0 24px;
+  }
+  /* Header */
+  header{
+    position:sticky;
+    top:0;
+    z-index:50;
+    background:#fff;
+    border-bottom:1px solid var(--border);
+    backdrop-filter:saturate(180%) blur(8px);
+  }
+  .nav{
+    height:72px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+  }
+  .brand{
+    display:flex; align-items:center; gap:12px; text-decoration:none; color:var(--text);
+  }
+  .logo-mark{
+    width:32px; height:32px; border-radius:50%;
+    background: radial-gradient(120% 120% at 20% 20%, var(--nova-blue-light) 0%, var(--nova-blue) 60%, #0B194A 100%);
+    display:grid; place-items:center; color:#fff; font-weight:700;
+  }
+  .brand-name{ font-weight:800; letter-spacing:.2px; }
+  .nav-links{
+    display:flex; gap:24px; align-items:center;
+  }
+  .nav-links a{
+    color:var(--text-2); text-decoration:none; font-weight:500;
+  }
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center;
+    gap:8px; padding:12px 18px; border-radius:12px; border:1px solid transparent;
+    font-weight:600; cursor:pointer; transition:.2s ease; text-decoration:none;
+  }
+  .btn-primary{
+    background:var(--cashback); color:#fff;
+  }
+  .btn-primary:hover{ background:#0EA371; }
+  .btn-outline{
+    background:#fff; color:var(--nova-blue); border-color:var(--border);
+  }
+  /* Hero */
+  .hero{
+    background: linear-gradient(135deg, var(--hero-a), var(--hero-b));
+    position:relative;
+    overflow:hidden;
+  }
+  .hero .container{
+    display:grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    align-items:center;
+    gap:40px;
+    padding:64px 24px 72px;
+    min-height:72vh;
+  }
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    background:#fff; border:1px solid var(--border);
+    padding:6px 10px; border-radius:999px; color:var(--text-2); font-size:13px;
+    box-shadow:var(--shadow-1);
+  }
+  h1{
+    font-size: clamp(32px, 4vw, 48px);
+    line-height:1.1; margin:12px 0 12px; font-weight:800; color:#0f1a3a;
+  }
+  .subtitle{
+    font-size: clamp(16px, 2vw, 18px);
+    color:var(--text-2); margin:0 0 20px;
+  }
+  .trust{
+    display:flex; gap:12px; flex-wrap:wrap; color:var(--text-2); font-size:14px; margin:8px 0 20px;
+  }
+  .hero-cta{ display:flex; gap:12px; flex-wrap:wrap; }
+  /* Tarjeta ilustrada */
+  .card-illus-wrap{
+    display:grid; place-items:center;
+  }
+  .card-illus{
+    width:min(420px, 100%);
+    aspect-ratio: 1.7 / 1;
+    border-radius:24px;
+    background:
+      radial-gradient(120% 120% at 0% 0%, #2A52C3 0%, var(--nova-blue) 55%, #0b1b4c 100%);
+    position:relative;
+    transform: rotate(-8deg);
+    box-shadow: 0 30px 80px rgba(30,58,138,0.35);
+    overflow:hidden;
+  }
+  .card-illus::before{
+    content:"";
+    position:absolute; inset:-20% -20% auto auto; height:60%;
+    background: linear-gradient(135deg, rgba(255,255,255,0.18), rgba(255,255,255,0));
+    transform: rotate(20deg);
+    border-radius: 32px;
+    filter: blur(2px);
+  }
+  .chip{
+    position:absolute; top:18%; left:10%;
+    width:56px; height:40px; border-radius:8px;
+    background: linear-gradient(180deg, #F8E59A, #D4AF37);
+    box-shadow: inset 0 2px 4px rgba(0,0,0,.15);
+  }
+  .nfc{
+    position:absolute; top:20%; right:12%; width:24px; height:24px; opacity:.85;
+    background:
+      radial-gradient(circle at 30% 50%, #fff 2px, transparent 3px),
+      radial-gradient(circle at 50% 50%, #fff 2px, transparent 3px),
+      radial-gradient(circle at 70% 50%, #fff 2px, transparent 3px);
+    filter: drop-shadow(0 1px 0 rgba(0,0,0,.1));
+    mask:
+      radial-gradient(12px 8px at 30% 50%, #000 98%, transparent),
+      radial-gradient(12px 8px at 50% 50%, #000 98%, transparent),
+      radial-gradient(12px 8px at 70% 50%, #000 98%, transparent);
+  }
+  .logo-nova{
+    position:absolute; bottom:18%; left:10%;
+    color:#fff; font-weight:800; font-size:22px; letter-spacing:.4px;
+  }
+  .card-number{
+    position:absolute; bottom:10%; left:10%;
+    color:#e7eefc; font-family: "Nunito Sans", sans-serif;
+    letter-spacing:2px; font-size:14px; opacity:.9;
+  }
+  /* Beneficios */
+  .benefits{
+    padding:64px 0;
+  }
+  .section-title{
+    font-size: clamp(24px, 3vw, 32px);
+    margin:0 0 24px; font-weight:800; color:#0f1a3a;
+  }
+  .benefit-grid{
+    display:grid; gap:20px;
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .benefit-card{
+    background:#fff; border:1px solid var(--border);
+    border-radius:16px; padding:24px; box-shadow:var(--shadow-1);
+  }
+  .benefit-icon{
+    width:44px; height:44px; border-radius:999px;
+    display:grid; place-items:center; margin-bottom:12px;
+    background:#EEF2FF; color:var(--nova-blue);
+    font-weight:800;
+  }
+  .benefit-card h3{ margin:0 0 6px; font-size:18px; }
+  .benefit-card p{ margin:0; color:var(--text-2); font-size:15px; }
+  /* Formulario */
+  .form-sec{ padding:48px 0 72px; }
+  .form-wrap{
+    background:#fff; border:1px solid var(--border); border-radius:16px;
+    padding:24px; box-shadow:var(--shadow-2);
+    display:grid; grid-template-columns: 1fr 1fr; gap:20px;
+  }
+  .form-wrap h3{ grid-column:1/-1; margin:0 0 4px; font-size:22px; }
+  .form-wrap p.helper{ grid-column:1/-1; margin:0 0 16px; color:var(--text-2); }
+  .field{ display:flex; flex-direction:column; gap:8px; }
+  .label{ font-weight:600; font-size:14px; color:#0f1a3a; }
+  input[type="text"], input[type="email"], input[type="tel"]{
+    height:48px; padding:0 14px; border-radius:12px; border:1px solid var(--border);
+    background:#fff; outline:none; transition:.15s; font-size:15px;
+  }
+  input:focus{
+    border-color: var(--nova-blue-light);
+    box-shadow: 0 0 0 3px rgba(59,130,246,.25);
+  }
+  .checkbox{
+    display:flex; gap:10px; align-items:flex-start; grid-column:1/-1; font-size:14px; color:var(--text-2);
+  }
+  .actions{ grid-column:1/-1; display:flex; gap:12px; flex-wrap:wrap; }
+  .note{ grid-column:1/-1; color:var(--text-2); font-size:12px; }
+  /* Footer */
+  footer{
+    border-top:1px solid var(--border); background:#fff; color:var(--text-2);
+  }
+  .footer-inner{
+    display:flex; align-items:center; justify-content:space-between; gap:16px;
+    height:72px;
+  }
+  .footer-links{ display:flex; gap:16px; }
+  .footer-links a{ color:var(--text-2); text-decoration:none; font-size:14px; }
+
+  /* Responsivo */
+  @media (max-width: 1024px){
+    .hero .container{ grid-template-columns:1fr; padding:48px 24px 56px; }
+    .card-illus{ margin-top:8px; transform: rotate(-4deg); }
+    .benefit-grid{ grid-template-columns: repeat(2, 1fr); }
+    .form-wrap{ grid-template-columns:1fr; }
+  }
+  @media (max-width: 600px){
+    .nav-links{ display:none; }
+    .benefit-grid{ grid-template-columns:1fr; }
+    .footer-inner{ flex-direction:column; height:auto; padding:16px 0; align-items:flex-start; }
+  }
+</style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#">
+        <div class="logo-mark">BN</div>
+        <div class="brand-name">Banco Nova</div>
+      </a>
+      <nav class="nav-links">
+        <a href="#beneficios">Beneficios</a>
+        <a href="#formulario">Cómo funciona</a>
+        <a href="#contacto">Contacto</a>
+        <a class="btn btn-outline" href="#formulario">Solicitar ahora</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <div class="hero-copy">
+        <div class="eyebrow">Nueva • Sin anualidad el primer año</div>
+        <h1>Tarjeta Nova Cashback 5%</h1>
+        <p class="subtitle">Devuelve dinero en todas tus compras locales e internacionales.</p>
+        <div class="trust">
+          <span>• Aprobación en 5 minutos</span>
+          <span>• Compras protegidas</span>
+        </div>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="#formulario">Solicitar ahora</a>
+          <a class="btn" href="#beneficios" style="background:#fff;border:1px solid var(--border);">Ver beneficios</a>
+        </div>
+      </div>
+      <div class="card-illus-wrap" aria-hidden="true">
+        <div class="card-illus">
+          <div class="chip"></div>
+          <div class="nfc"></div>
+          <div class="logo-nova">BANCO NOVA</div>
+          <div class="card-number">5243&nbsp;••••&nbsp;••••&nbsp;7129</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="beneficios" class="benefits">
+    <div class="container">
+      <h2 class="section-title">Beneficios principales</h2>
+      <div class="benefit-grid">
+        <div class="benefit-card">
+          <div class="benefit-icon">5%</div>
+          <h3>5% en supermercados</h3>
+          <p>Obtén cashback en compras locales e internacionales en tiendas participantes.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">Ø</div>
+          <h3>Sin anualidad el primer año</h3>
+          <p>Disfruta tu tarjeta sin costo de mantenimiento el primer año.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">⚡</div>
+          <h3>Aprobación en 5 minutos</h3>
+          <p>Proceso 100% digital, rápido y seguro.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">🛡️</div>
+          <h3>Seguros incluidos</h3>
+          <p>Protección en compras y extensiones de garantía.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">📱</div>
+          <h3>Control desde app</h3>
+          <p>Administra límites, bloqueos y alertas.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">🕘</div>
+          <h3>Soporte 24/7</h3>
+          <p>Te acompañamos cuando nos necesites.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="formulario" class="form-sec">
+    <div class="container">
+      <div class="form-wrap">
+        <h3>Solicita tu tarjeta</h3>
+        <p class="helper">Completa tus datos y te contactaremos. Es un formulario simulado para diseño.</p>
+
+        <label class="field">
+          <span class="label">Nombre completo</span>
+          <input type="text" placeholder="Ej. Ana López" />
+        </label>
+        <label class="field">
+          <span class="label">Email</span>
+          <input type="email" placeholder="ejemplo@correo.com" />
+        </label>
+        <label class="field">
+          <span class="label">Teléfono</span>
+          <input type="tel" placeholder="+52 55 1234 5678" />
+        </label>
+        <div></div>
+
+        <label class="checkbox">
+          <input type="checkbox" />
+          <span>Acepto términos y política de privacidad</span>
+        </label>
+
+        <div class="actions">
+          <a href="#" class="btn btn-primary">Enviar solicitud</a>
+          <a href="#" class="btn">Ver aviso de privacidad</a>
+        </div>
+
+        <div class="note">No compartimos tus datos. La aprobación está sujeta a verificación y políticas internas.</div>
+      </div>
+    </div>
+  </section>
+
+  <footer id="contacto">
+    <div class="container footer-inner">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <div class="logo-mark" style="width:24px;height:24px;font-size:12px;">BN</div>
+        <span>Banco Nova</span>
+      </div>
+      <div class="footer-links">
+        <a href="#">Términos</a>
+        <a href="#">Privacidad</a>
+        <a href="#">Ayuda</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
